@@ -1,6 +1,7 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var app = require('express')(),
+    http = require('http').Server(app),
+    io = require('socket.io')(http),
+    users = require('./js/users.json');
 
 app.get('/', function (req, res) {
     res.send('<h1>Hello world</h1>');
