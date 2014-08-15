@@ -1,0 +1,160 @@
+@font-face {
+    font-family: "Roboto";
+    src: url(fonts/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(fonts/Roboto/Roboto-Bold.ttf);
+    font-weight: bold;
+}
+
+body {
+    font-family: "Roboto";
+    font-size: 12px;
+    line-height: 1.6em;
+    padding: 0;
+    margin: 0;
+    cursor: default;
+    background-color: #e9e9e9;
+}
+input {
+    font-family: "Roboto";
+    font-size: 12px;
+    line-height: 1.6em;
+    padding: 0;
+    margin: 0;
+}
+
+.il-header {
+    background-color: #60b572;
+    color: #fff;
+    line-height: 1em;
+    font-weight: bold;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    -webkit-text-shadow: 1px 1px 1px #333;
+    -moz-text-shadow: 1px 1px 1px #333;
+    text-shadow: 1px 1px 1px #333;
+}
+.il-body {
+    position: absolute;
+    top: 42px;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+    overflow: hidden;
+}
+.il-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.il-input {
+    padding: 15px 20px;
+    border: 0;
+    color: #535353;
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid #ccc;
+}
+.il-input:focus {
+    outline: 0;
+}
+
+.il-messages {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+.il-message, .il-message--me, .il-message--greetings {
+    padding: 5px 10px;
+    background-color: #fff;
+    margin: 10px;
+}
+.il-message {
+    margin-right: 50px;
+}
+.il-message--me {
+    margin-left: 50px;
+}
+.il-message--greetings {
+    text-align: center;
+}
+.il-message_user {
+    color: #535353;
+    font-weight: bold;
+}
+.il-message_text {
+    color: #8f8f8f;
+}
+
+/* Auth form */
+
+.il-auth_overlay {
+    background: rgba(250, 250, 250, 0.6);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 960;
+}
+.il-auth {
+    background-color: #fff;
+    height: auto;
+    left: 50vw;
+    margin-left: -150px;
+    margin-top: -150px;
+    position: fixed;
+    top: 50vh;
+    width: 300px;
+}
+.il-auth_header {
+    background-color: #60b572;
+    color: #fff;
+    line-height: 1em;
+    font-weight: bold;
+    padding: 15px 20px;
+    -webkit-text-shadow: 1px 1px 1px #333;
+    -moz-text-shadow: 1px 1px 1px #333;
+    text-shadow: 1px 1px 1px #333;
+}
+.il-auth_form_group {
+    padding: 0 15px;
+    margin: 15px 0;
+    position: relative;
+}
+.il-auth_form_input {
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+.il-auth_form_input:focus {
+    outline: none;
+}
+.il-auth_form_btn {
+    background-color: #ddd;
+    box-sizing: border-box;
+    display: block;
+    border: 0;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+.il-auth_form_btn:hover {
+    background-color: #eee;
+}
+
+/* /Auth form */

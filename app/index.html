@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="iLink">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="css/perfect-scrollbar-0.4.10.min.css"/>
+    <link rel="stylesheet" href="css/default.css"/>
+</head>
+<body ng-controller="MainCtrl">
+<div class="il-auth_overlay" id="auth-window" ng-hide="isAuth">
+    <div class="il-auth">
+        <form action="" class="il-auth_form" ng-submit="auth()">
+            <div class="il-auth_header">Кто ты, йоу?</div>
+            <div class="il-auth_body">
+                <div class="il-auth_form_group">
+                    <input type="text" class="il-auth_form_input" ng-model="username" placeholder="Username"/>
+                </div>
+                <div class="il-auth_form_group">
+                    <input type="submit" value="Поехали!" class="il-auth_form_btn"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="il-header">iLink</div>
+<div class="il-body">
+    <div class="il-messages">
+        <div class="il-messages_wrap">
+            <div class="il-message--greetings">
+                <h3>Добро пожаловать!</h3>
+
+                <p>Представляем вам наш новый iLink.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="il-footer">
+    <form ng-submit="send()">
+        <input class="il-input" ng-model="text" type="text" placeholder="Enter your message"/>
+    </form>
+</div>
+<script src="http://noel.ykt.ru:8087/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/perfect-scrollbar-0.4.10.with-mousewheel.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/angular-sanitize.min.js"></script>
+<script type="text/javascript" src="js/client.js"></script>
+</body>
+</html>
