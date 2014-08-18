@@ -1,13 +1,22 @@
 var socket = io('http://noel.ykt.ru:8087/'),
     storageParams = {
         username: "ilUsername",
-        uid: "ilUid"
+        uid: "ilUid",
+        pwd: "ilPwd"
     };
 
 socket.on('receive', function (data) {
-    console.log(data);
-    $(".il-messages_wrap").append(initMessage(data));
+    console.log('Message receive:', data);
+    $(".il-messages_wrap").append(generateMessageHTML(data));
     scrollChat();
+});
+socket.on('user connected', function (data) {
+    console.log('User connected:', data);
+    $(".il-messages_wrap").append(generateSystemLogHTML(data));
+});
+socket.on('user disconnected', function (data) {
+    console.log('User connected:', data);
+    $(".il-messages_wrap").append(generateSystemLogHTML(data));
 });
 
 function isAuth() {
@@ -21,7 +30,15 @@ function scrollChat() {
         .perfectScrollbar('update');
 }
 
-function initMessage(data) {
+function generateSystemLogHTML(data) {
+    var log = $('<div>', {
+        class: 'il-message--log',
+        html: data.message
+    });
+    return log;
+}
+
+function generateMessageHTML(data) {
     var message;
     if (data.uid == localStorage.getItem(storageParams.uid)) {
         message = $('<div>', {
