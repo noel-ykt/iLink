@@ -1,23 +1,27 @@
-var socket = io('http://noel.ykt.ru:8087/'),
+var socket,
     storageParams = {
         username: "ilUsername",
         uid: "ilUid",
         pwd: "ilPwd"
     };
 
-socket.on('receive', function (data) {
-    console.log('Message receive:', data);
-    $(".il-messages_wrap").append(generateMessageHTML(data));
-    scrollChat();
-});
-socket.on('user connected', function (data) {
-    console.log('User connected:', data);
-    $(".il-messages_wrap").append(generateSystemLogHTML(data));
-});
-socket.on('user disconnected', function (data) {
-    console.log('User connected:', data);
-    $(".il-messages_wrap").append(generateSystemLogHTML(data));
-});
+function initChat() {
+    socket = io('http://noel.ykt.ru:8087/');
+
+    socket.on('receive', function (data) {
+        console.log('Message receive:', data);
+        $(".il-messages_wrap").append(generateMessageHTML(data));
+        scrollChat();
+    });
+    socket.on('user connected', function (data) {
+        console.log('User connected:', data);
+        $(".il-messages_wrap").append(generateSystemLogHTML(data));
+    });
+    socket.on('user disconnected', function (data) {
+        console.log('User connected:', data);
+        $(".il-messages_wrap").append(generateSystemLogHTML(data));
+    });
+}
 
 function isAuth() {
     return (localStorage.getItem(storageParams.username) != null && localStorage.getItem(storageParams.uid) != null);
@@ -71,13 +75,17 @@ angular.module('iLink', ['ngSanitize'])
                 localStorage.setItem(storageParams.username, $scope.username);
                 localStorage.setItem(storageParams.uid, (new Date()).getTime());
                 angular.element(document.getElementById('auth-window')).hide();
+                initChat();
             }
         };
         $scope.send = function () {
             if ($scope.text.length > 0) {
                 socket.emit('message', {
-                    username: localStorage.getItem(storageParams.username),
-                    uid: localStorage.getItem(storageParams.uid),
+                    user: {
+                        username: localStorage.getItem(storageParams.username),
+                        uid: localStorage.getItem(storageParams.uid),
+                        pwd: localStorage.getItem(storageParams.pwd)
+                    },
                     message: $scope.text
                 })
                 $scope.text = '';
